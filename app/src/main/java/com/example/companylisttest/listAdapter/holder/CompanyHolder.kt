@@ -20,7 +20,7 @@ class CompanyHolder(itemView: View) : AbsHolder(itemView) {
         textViewCompanyName.text = item.name
 
         Glide.with(itemView)
-            .load(NetModule.BASE_URL + item.image)
+            .load(NetModule.BASE_URL + item.imageUrl)
             .centerCrop()
             .into(imageViewCompany)
         itemView.setOnClickListener {

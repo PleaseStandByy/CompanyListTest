@@ -46,6 +46,7 @@ ext{
     shimmer = '2.1.0'
     swipe_refresh = '1.0.0'
     carview = '1.0.0'
+    material = '1.2.0-alpha04'
 }
 
 dependencies {
@@ -93,6 +94,8 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipe_refresh"
     implementation "androidx.cardview:cardview:$carview"
+
+    implementation "com.google.android.material:material:$material"
 
 
 }

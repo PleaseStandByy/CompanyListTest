@@ -16,6 +16,8 @@ import com.example.companylisttest.listAdapter.holder.CompanyHolder
 import com.example.companylisttest.listAdapter.interfaces.OnItemClickListner
 import com.example.companylisttest.model.Company
 import kotlinx.android.synthetic.main.fragment_company_list.*
+import com.example.companylisttest.companyList.CompanyInfoFragment
+
 
 class CompanyListFragment : MvpAppCompatFragment(), CompanyListView{
 
@@ -44,6 +46,11 @@ class CompanyListFragment : MvpAppCompatFragment(), CompanyListView{
         listAdapterCompany.onItemClickListner = object : OnItemClickListner {
             override fun onitemClick(position: Int) {
 
+                val fragment = CompanyInfoFragment()
+                val bundle = Bundle()
+                bundle.putString(CompanyInfoFragment.BUNDLE_COMPANY_ID, listAdapterCompany.getItem(position).id)
+                fragment.arguments = bundle
+                fragment.show(activity!!.supportFragmentManager, "")
             }
 
         }

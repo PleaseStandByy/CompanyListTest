@@ -1,6 +1,7 @@
 package com.example.companylisttest
 
 import com.example.companylisttest.model.Company
+import com.example.companylisttest.model.CompanyInfo
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,5 +11,5 @@ interface CompanyApi {
     suspend fun getCompanyList() : ArrayList<Company>
 
     @GET("test.php")
-    suspend fun getCompany(@Query("id") id: String) : Company
+    suspend fun getCompany(@Query("id") id: String) : ArrayList<CompanyInfo>
 }

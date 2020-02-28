@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CompanyListTest</string>
+    <string name="on_map">На карте</string>
+    <string name="website">Сайт</string>
+    <string name="phone">Телефон</string>
+    <string name="error">Ошибка</string>
 </resources>
