@@ -20,7 +20,6 @@ import com.example.companylisttest.companyList.CompanyInfoFragment
 
 
 class CompanyListFragment : MvpAppCompatFragment(), CompanyListView{
-
     @InjectPresenter
     lateinit var presenter: CompanyListPresenter
 
@@ -28,8 +27,8 @@ class CompanyListFragment : MvpAppCompatFragment(), CompanyListView{
     fun providePresenter() = CompanyListPresenter()
 
     private lateinit var listAdapterCompany : ListAdapter<Company>
-    lateinit var sceletonScreen: RecyclerViewSkeletonScreen
 
+    lateinit var sceletonScreen: RecyclerViewSkeletonScreen
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,7 +44,6 @@ class CompanyListFragment : MvpAppCompatFragment(), CompanyListView{
         listAdapterCompany = ListAdapter(R.layout.item_company,CompanyHolder::class)
         listAdapterCompany.onItemClickListner = object : OnItemClickListner {
             override fun onitemClick(position: Int) {
-
                 val fragment = CompanyInfoFragment()
                 val bundle = Bundle()
                 bundle.putString(CompanyInfoFragment.BUNDLE_COMPANY_ID, listAdapterCompany.getItem(position).id)
@@ -58,6 +56,7 @@ class CompanyListFragment : MvpAppCompatFragment(), CompanyListView{
         recycleViewCompany.adapter = listAdapterCompany
 
         swipeRefreshLayout.setOnRefreshListener {
+            message.visibility = View.GONE
             presenter.loadCopmanyList()
         }
         sceletonScreen = Skeleton.bind(recycleViewCompany)
@@ -80,7 +79,10 @@ class CompanyListFragment : MvpAppCompatFragment(), CompanyListView{
         }
     }
 
-    override fun openCompany(idCompany: String) {
-
+    override fun showMessage(text: String) {
+        swipeRefreshLayout.isRefreshing = false
+        sceletonScreen.hide()
+        message.visibility = View.VISIBLE
+        message.text = text
     }
 }

@@ -13,5 +13,6 @@ interface CompanyListView: MvpView {
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showProgress(isShow: Boolean)
 
-    fun openCompany(idCompany: String)
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun showMessage(text: String)
 }
